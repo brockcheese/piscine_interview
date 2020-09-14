@@ -1,0 +1,2 @@
+O(n) time in best case, O(n^2) in worst case, with n the number of elements.
+O(1) space.

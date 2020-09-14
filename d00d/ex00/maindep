@@ -1,0 +1,31 @@
+#include "header.h"
+
+struct s_art**	makearts(const char *file) {
+	struct s_art**	ans;
+	int				fd;
+	char			buffer[10000];
+	char			*filestring;
+	char			*tempfilestring;
+
+	fd = open(file, O_RDONLY);
+	filestring = NULL;
+	while(read(fd, buffer, 10000)) {
+		tempfilestring = filestring;
+		filestring = malloc(sizeof(char) * (strlen(tempfilestring) + 10001));
+		filestring = strcat(tempfilestring, buffer);
+		free(tempfilestring);
+	}
+	printf("%s\n", filestring);
+	close(fd);
+	free(filestring);
+	ans = NULL;
+	return (ans);
+}
+
+int	main(int argc, char** argv) {
+	struct s_art	**arts;
+	if (argc == 2) {
+		arts = makearts(argv[1]);
+	}
+	return (0);
+}

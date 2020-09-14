@@ -1,0 +1,2 @@
+O(nlogn) time, where n is the number of elements in the array.
+O(n) space on the stack, where n is the number of elements in the array.

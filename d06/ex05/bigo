@@ -1,0 +1,2 @@
+O(n!) time, wher n is the number of punches.
+O(1) space.

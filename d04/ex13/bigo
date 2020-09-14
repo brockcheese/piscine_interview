@@ -1,0 +1,2 @@
+O(n) time, where n is the number of bits.
+O(n) space on the stack, where n is the number of bits.

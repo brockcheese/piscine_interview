@@ -1,0 +1,2 @@
+O(n + m) time in best case, O(nm) in worst case, with n the number of elements in the haystack and m the number of elements in the needle.
+O(1) space

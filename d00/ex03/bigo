@@ -1,0 +1,2 @@
+O(1) time in best case, O(n) in worst case, with n the number of elements in the array.
+O(n) space, with n the number of elements in the array.

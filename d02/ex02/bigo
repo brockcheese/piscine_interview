@@ -1,0 +1,2 @@
+O(nlogn) time, with n the number of elements.
+O(logn) space on the stack, with n the number of elements.

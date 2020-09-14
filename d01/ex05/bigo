@@ -1,0 +1,2 @@
+O(1) time in best case, O(m) in worst case, with m the number of stacks.
+O(n) space, with n the number of elements.

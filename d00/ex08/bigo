@@ -1,0 +1,2 @@
+O(1) time in best case, O(n^m) in worst case, with n the number of elements in the dictionary and m the depth.
+O(m) space in stack memory, with m the depth.

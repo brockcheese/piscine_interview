@@ -1,0 +1,2 @@
+O(nm) time, with n the number of Characters in the string and m the length of the longest element in the hashtable.
+O(n) space, with n the number of elements in the array.
