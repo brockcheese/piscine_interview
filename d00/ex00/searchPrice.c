@@ -12,13 +12,16 @@
 
 #include "header.h"
 
-int	searchPrice(struct s_art **arts, char *name) {
-	int i;
+//searches in the array the price of a work of art, given its name as parameter
 
-	i = -1;
+int	searchPrice(struct s_art **arts, char *name) {
+	int i; //incrementor
+
+	i = -1; //initializing i
 	while(arts[++i]) {
+		//for each item in the array check if the item matches the name
 		if (strcmp(arts[i]->name, name) == 0)
-			return (arts[i]->price);
+			return (arts[i]->price); //return the price
 	}
-	return (-1);
+	return (-1); //otherwise return -1
 }
