@@ -12,17 +12,20 @@
 
 #include "header.h"
 
+//binary search function to find the price of a work of art
+
 int searchPriceHelper(struct s_art **arts, int start, int end, int check, char *name) {
 	int cmp;
 
+	//checks wheather the middle is greater or less than searched name
 	cmp = strcmp(name, arts[check]->name);
-	if (check < start || check > end)
+	if (check < start || check > end) //error check
 		return (-1);
-	if (cmp < 0)
+	if (cmp < 0) //searches to the left of the middle index
 		return (searchPriceHelper(arts, start, check - 1, start + ((check - start) / 2), name));
-	else if (cmp > 0)
+	else if (cmp > 0) // searches to the right of the middle index
 		return (searchPriceHelper(arts, check + 1, end, check + ((end - check) / 2), name));
-	else
+	else //returns the searched price
 		return (arts[check]->price);
 }
 
