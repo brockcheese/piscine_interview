@@ -12,18 +12,22 @@
 
 #include "header.h"
 
+//helper function for recursion
+
 void printReverseHelper(struct s_node *lst) {
-	if (lst == NULL)
+	if (lst == NULL) //escape recursion if lst is done
 		return;
-	if (lst->next == NULL)
+	if (lst->next == NULL) //print last word
 		printf("%s", lst->word);
-	else {
+	else { //recursion for the rest of the words
 		printReverseHelper(lst->next);
-		printf(" %s", lst->word);
+		printf(" %s", lst->word); //prints current word
 	}
 }
 
+//prints sentence in reverse order
+
 void printReverse(struct s_node *lst) {
-	printReverseHelper(lst);
-	printf("\n");
+	printReverseHelper(lst); //sends to helper function
+	printf("\n"); //prints newline
 }
