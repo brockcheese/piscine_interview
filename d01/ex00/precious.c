@@ -12,17 +12,19 @@
 
 #include "header.h"
 
-char	*precious(int *text, int size) {
-	int i;
-	struct s_node *temp;
-	struct s_node *curr;
-	char *ans;
+//uses a circular doubly linked list to translate a code
 
-	i = -1;
-	temp = NULL;
-	ans = malloc(sizeof(char) * size + 1);
-	ans[size] = '\0';
-	while(CS[++i]) {
+char	*precious(int *text, int size) {
+	int i; //index
+	struct s_node *temp; //temporary node storage
+	struct s_node *curr; //current node in linked list
+	char *ans; //the returned value
+
+	i = -1; //initialize index
+	temp = NULL; //initialize temp node storage
+	ans = malloc(sizeof(char) * size + 1); //allocates mem for return val
+	ans[size] = '\0'; //null terminates return value
+	while(CS[++i]) { //create node for each item
 		curr = malloc(sizeof(struct s_node));
 		curr->c = CS[i];
 		curr->prev = temp;
@@ -31,22 +33,22 @@ char	*precious(int *text, int size) {
 			temp->next = curr;
 		temp = curr;
 	}
-	while(curr->prev) {
+	while(curr->prev) { //resets linked list at the beginning
 		curr = curr->prev;
 	}
-	curr->prev = temp;
-	temp->next = curr;
-	i = -1;
-	while(++i < size) {
-		if (text[i] > 0) {
+	curr->prev = temp; //links the end of the list to the beginning
+	temp->next = curr; //links the beginning of the list to the end
+	i = -1; //reset the index
+	while(++i < size) { //for each integer passed
+		if (text[i] > 0) { //moves forward in the list
 			while (text[i]-- != 0)
 				curr = curr->next;
 		}
-		else if (text[i] < 0) {
+		else if (text[i] < 0) { //moves backward in the list
 			while (text[i]++ != 0)
 				curr = curr->prev;
 		}
-		ans[i] = curr->c;
+		ans[i] = curr->c; //sets the letter to the stored value
 	}
-	return (ans);
+	return (ans); //returns the string
 }
