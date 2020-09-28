@@ -12,17 +12,19 @@
 
 #include "header.h"
 
-char *NthLastCity(struct s_city *city, int n) {
-	struct s_city *ans;
+//finds least populated cities given a linked list
 
-	ans = city;
-	if (!city)
+char *NthLastCity(struct s_city *city, int n) {
+	struct s_city *ans; //leading node to find nth last item
+
+	ans = city; //sets leading node to current node
+	if (!city) //error checking
 		return (NULL);
-	while (ans && n--)
+	while (ans && n--) //send leading node n nodes away from curr
 		ans = ans->next;
-	while(ans && ans->next) {
+	while(ans && ans->next) { //increment both nodes until end of the list
 		city = city->next;
 		ans = ans->next;
 	}
-	return (city->name);
+	return (city->name); //current node is now n places from end of list
 }
