@@ -12,16 +12,18 @@
 
 #include "header.h"
 
+//simple insertion sort that sorts scores in descending order
+
 void insertionSort(struct s_player **players) {
-	struct s_player *player;
+	struct s_player *player; //stores single item in array
 	int				i, j;
 
-	i = 0;
-	while(players[++i]) {
-		player = players[i];
+	i = 0; //index initialization
+	while(players[++i]) { //sorts each item in the array
+		player = players[i]; //stores current item
 		for(j = i - 1; j != -1 && player->score > players[j]->score; j--) {
-			players[j + 1] = players[j];
+			players[j + 1] = players[j]; //moves item up in array
 		}
-		players[j + 1] = player;
+		players[j + 1] = player; //inserts item back into the array
 	}
 }
