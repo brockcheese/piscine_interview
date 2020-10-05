@@ -12,18 +12,20 @@
 
 #include "header.h"
 
+//simple count sort
+
 void countSort(unsigned char *utensils, int n) {
-	int count[n];
+	int count[n]; //array that stores the number of similar values
 
 	for(int i = 0; i < n; i++) {
-		count[i] = 0;
+		count[i] = 0; //initializes array
 	}
 	for(int i = 0; i < n; i++) {
-		count[utensils[i]]++;
+		count[utensils[i]]++; //counts number of values with same num
 	}
-	int j = 0;
+	int j = 0; //new index
 	for(int i = 0; utensils[j] && i < n; i++) {
 		while(count[i]--)
-			utensils[j++] = i;
+			utensils[j++] = i; //sets values to values in count
 	}
 }
