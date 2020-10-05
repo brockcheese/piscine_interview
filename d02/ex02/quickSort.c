@@ -12,11 +12,15 @@
 
 #include "header.h"
 
-int		sort(struct s_player **players, int start, int end) {
-	struct s_player *temp;
-	int i = start - 1;
+//sorts section of array
 
+int		sort(struct s_player **players, int start, int end) {
+	struct s_player *temp; //storage for swap
+	int i = start - 1; //initialize index for pivot
+
+	//sorts items at pivot
 	for (int j = start; j < end; j++) {
+		//swaps items at pivot if they need to be sorted
 		if (players[j]->score > players[end]->score) {
 			i++;
 			temp = players[i];
@@ -24,25 +28,32 @@ int		sort(struct s_player **players, int start, int end) {
 			players[j] = temp;
 		}
 	}
+	//swaps pivot with current pivot index
 	temp = players[++i];
 	players[i] = players[end];
 	players[end] = temp;
-	return (i);
+	return (i); //return pivot index
 }
 
+//helper function for recursion
+
 void quickSortHelper(struct s_player **players, int start, int end) {
-	if (start < end) {
-		int pivot = sort(players, start, end);
+	if (start < end) { //error check
+		int pivot = sort(players, start, end); //sorts array
+		//recursively sorts everything to the left of the pivot
 		quickSortHelper(players, start, pivot - 1);
+		//recursively sorts everything to the right of the pivot
 		quickSortHelper(players, pivot + 1, end);
 	}
 }
 
-void quickSort(struct s_player **players) {
-	int i;
+//quicksort that sorts player structure by score in descending order
 
-	i = -1;
-	while(players[++i])
+void quickSort(struct s_player **players) {
+	int i; //indexer
+
+	i = -1; //initialize index
+	while(players[++i]) //sets i to count
 		;
-	quickSortHelper(players, 0, i - 1);
+	quickSortHelper(players, 0, i - 1); //pushes it to recursive function
 }
