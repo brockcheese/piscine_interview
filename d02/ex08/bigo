@@ -1,2 +1,0 @@
-O(nk Log k) time, where n the number of elements, k is the number of files.
-O(1) space.
