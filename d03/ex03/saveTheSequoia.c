@@ -12,18 +12,21 @@
 
 #include "header.h"
 
-struct s_node *saveTheSequoiaHelper(struct s_node *root) {
-	struct s_node *temp;
+//helper function to recursively transform min-heap to max-heap
 
-	if (!root)
+struct s_node *saveTheSequoiaHelper(struct s_node *root) {
+	struct s_node *temp; //temporary node for swapping
+
+	if (!root) //if no tree exists return NULL
 		return (NULL);
 	if (!(root->left) && !(root->right))
-		return (root);
-	root->left = saveTheSequoiaHelper(root->left);
-	root->right = saveTheSequoiaHelper(root->right);
-	temp = root;
+		return (root); //if tree contains single node return node
+	root->left = saveTheSequoiaHelper(root->left); //recurses left child
+	root->right = saveTheSequoiaHelper(root->right); //recurses right child
+	temp = root; //store parent node to return if already heapified
 	if (root->left && root->left->value > root->value) {
 		if (root->right && root->right->value > root->left->value) {
+			//if right child value greater than parent swap nodes
 			temp = root->left;
 			root->left = root->right->left;
 			root->right->left = temp;
@@ -32,7 +35,7 @@ struct s_node *saveTheSequoiaHelper(struct s_node *root) {
 			temp->right = root;
 			temp->right = saveTheSequoiaHelper(temp->right);
 		}
-		else {
+		else { //if left child value greater than parent swap nodes
 			temp = root->right;
 			root->right = root->left->right;
 			root->left->right = temp;
@@ -43,6 +46,7 @@ struct s_node *saveTheSequoiaHelper(struct s_node *root) {
 		}
 	}
 	else if (root->right && root->right->value > root->value) {
+		//if right child value greater than parent swap nodes
 		temp = root->left;
 		root->left = root->right->left;
 		root->right->left = temp;
@@ -51,9 +55,12 @@ struct s_node *saveTheSequoiaHelper(struct s_node *root) {
 		temp->right = root;
 		temp->right = saveTheSequoiaHelper(temp->right);
 	}
-	return (temp);
+	return (temp); //return swapped node as new parent
 }
 
+//transforms a min-heap into a max-heap
+
 void saveTheSequoia(struct s_node **root) {
+	//helper function for recursion
 	*root = saveTheSequoiaHelper(*root);
 }
