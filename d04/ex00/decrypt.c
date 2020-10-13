@@ -10,22 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+//converts a binary string given as parameter to an integer
+
 int toInt(char *bits) {
-	int ans = 0;
-	int b = 1;
-	for(int i = 5; i >= 0; i--) {
-		ans += (bits[i] - '0') * b;
-		b *= 2;
+	int ans = 0; //initialize return value
+	int b = 1; //initializes the power of 2
+	for(int i = 5; i >= 0; i--) { //for each character in the binary string
+		ans += (bits[i] - '0') * b; //add character to return value
+		b *= 2; //multiply by base
 	}
-	return (ans);
+	return (ans); //return integer
 }
 
+//gets the sum of two binary string s passed as parameters (a and b)
+
 char *getSum(char *a, char *b) {
-	int r = 0;
+	int r = 0; //initialize digit sum
 	for(int i = 5; i >= 0; i--) {
-		r += a[i] - '0' + b[i] - '0';
-		b[i] = (char)(r % 2 + '0');
-		r /= 2;
+		r += a[i] - '0' + b[i] - '0'; //calculate sum of digits
+		b[i] = (char)(r % 2 + '0'); //store digit place
+		r /= 2; //compute remainder
 	}
-	return (b);
+	return (b); //return binary string sum
 }
